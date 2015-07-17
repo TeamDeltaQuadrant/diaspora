@@ -11,6 +11,7 @@ app.views.Content = app.views.Base.extend({
       largePhoto : this.largePhoto(),
       smallPhotos : this.smallPhotos(),
       location: this.location(),
+      latitude: this.latitude(),
       isReshare : this.model.get("post_type") === "Reshare"
     });
   },
@@ -42,6 +43,11 @@ app.views.Content = app.views.Base.extend({
   location: function(){
     var address = this.model.get('address')? this.model.get('address') : '';
     return address;
+  },
+
+  latitude: function(){
+    var lat = this.model.get('lat')? this.model.get('lat') : '';
+    return lat;
   },
 
   collapseOversized : function() {

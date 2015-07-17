@@ -17,6 +17,7 @@ app.pages.SinglePostViewer = app.views.Base.extend({
 
   setupLightbox : function(){
     this.lightbox = Diaspora.BaseWidget.instantiate("Lightbox");
+    console.log("test");
     this.lightbox.set({
       imageParent: '.photo_attachments',
       imageSelector: 'img.stream-photo'

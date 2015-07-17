@@ -38,6 +38,7 @@ class PostPresenter
         :root => root,
         :title => title,
         :address => @post.address,
+        :coordinates => {lat: @post.location.lat, lng: @post.location.lng},
         :poll => @post.poll(),
         :already_participated_in_poll => already_participated_in_poll,
         :participation => participate?,

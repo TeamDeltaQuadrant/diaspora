@@ -145,6 +145,24 @@ FactoryGirl.define do
     lng 2
   end
 
+      # factory(:status_message_with_location) do
+    #   after(:build) do |sm|
+    #     FactoryGirl.create(:location, status_message: sm)
+    #   end
+    # end
+    # factory(:status_message_with_location) do
+    #   sequence(:text) {|n| "There are #{n} ninjas in this photo." }
+    #   after(:build) do |sm|
+    #     FactoryGirl.create(
+    #       :location,
+    #       author:         sm.author,
+    #       status_message: sm,
+    #       pending:        false,
+    #       public:         sm.public
+    #     )
+    #   end
+    # end
+
   factory(:poll) do
     sequence(:question) { |n| "What do you think about #{n} ninjas?" }
     after(:build) do |p|
