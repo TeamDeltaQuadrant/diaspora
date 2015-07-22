@@ -11,7 +11,6 @@ app.views.Content = app.views.Base.extend({
       largePhoto : this.largePhoto(),
       smallPhotos : this.smallPhotos(),
       location: this.location(),
-      coordinates: this.coordinates(),
       isReshare : this.model.get("post_type") === "Reshare"
     });
   },
@@ -30,7 +29,6 @@ app.views.Content = app.views.Base.extend({
     return photos;
   },
 
-
   expandPost: function(evt) {
     var el = $(this.el).find('.collapsible');
     el.removeClass('collapsed').addClass('opened');
@@ -43,11 +41,6 @@ app.views.Content = app.views.Base.extend({
   location: function(){
     var address = this.model.get('address')? this.model.get('address') : '';
     return address;
-  },
-
-  coordinates: function(){
-    var coordinates = this.model.get('coordinates')? this.model.get('coordinates') : '';
-    return coordinates;
   },
 
   collapseOversized : function() {
@@ -153,4 +146,5 @@ app.views.SPVOpenGraph = app.views.OpenGraph.extend({
     // override with nothing
   }
 });
+
 // @license-end

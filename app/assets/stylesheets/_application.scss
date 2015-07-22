@@ -43,6 +43,10 @@
 @import 'single-post-view';
 @import 'new_styles/poll';
 
+/* map */
+@import 'vendor/leaflet';
+@import 'map';
+
 /* conversations */
 @import 'conversations';
 
