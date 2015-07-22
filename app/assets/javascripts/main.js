@@ -45,3 +45,4 @@
 //= require bootstrap
 //= require osmlocator
 //= require bootstrap-switch
+//= require leaflet
