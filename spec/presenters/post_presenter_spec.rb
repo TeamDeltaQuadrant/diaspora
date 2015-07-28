@@ -2,8 +2,7 @@ require 'spec_helper'
 
 describe PostPresenter do
   before do
-    @location = FactoryGirl.create(:location)
-    @sm = FactoryGirl.create(:status_message, :public => true, address: location.address)
+    @sm = FactoryGirl.create(:status_message, :public => true)
     @sm_with_poll = FactoryGirl.create(:status_message_with_poll, public: true)
     @presenter = PostPresenter.new(@sm, bob)
     @unauthenticated_presenter = PostPresenter.new(@sm)
@@ -20,19 +19,6 @@ describe PostPresenter do
 
     it 'works without a user' do
       expect(@unauthenticated_presenter.as_json).to be_a Hash
-    end
-
-    describe "as_json content" do
-      it 'contains coordinates' do
-        pp @location
-        pp @sm
-        expect(@presenter.as_json).to include(:coordinates)
-      end
-
-      it 'contains latitude and longitude' do
-        expect(@status_message_with_location_presenter.as_json[:coordinates]).to include(:lat)
-        expect(@status_message_with_location_presenter.as_json[:coordinates]).to include(:lng)
-      end
     end
   end
 

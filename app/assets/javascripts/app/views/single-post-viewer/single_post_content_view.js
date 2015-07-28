@@ -65,7 +65,7 @@ app.views.SinglePostContent = app.views.Base.extend({
           shadowRetinaUrl: ImagePaths.get("leaflet-marker-shadow.png"),
       });
 
-      var marker_on_map = L.marker(coordinates, {icon: marker}).addTo(map);
+      var markerOnMap = L.marker(coordinates, {icon: marker}).addTo(map);
 
       return map;
     }
