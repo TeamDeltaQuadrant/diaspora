@@ -57,15 +57,8 @@ app.views.SinglePostContent = app.views.Base.extend({
         id: "zaziemo.mpn66kn8",
         accessToken: "pk.eyJ1IjoiemF6aWVtbyIsImEiOiI3ODVjMzVjNmM2ZTU3YWM3YTE5YWYwMTRhODljM2M1MSJ9.-nVgyS4PLnV4m9YkvMB5wA"
       }).addTo(map);
-
-      var marker = L.icon({
-          iconUrl: ImagePaths.get("leaflet-marker-icon.png"),
-          iconRetinaUrl: ImagePaths.get("leaflet-marker-icon-2x.png"),
-          shadowUrl: ImagePaths.get("leaflet-marker-shadow.png"),
-          shadowRetinaUrl: ImagePaths.get("leaflet-marker-shadow.png"),
-      });
-
-      var markerOnMap = L.marker(coordinates, {icon: marker}).addTo(map);
+      
+      var markerOnMap = L.marker(coordinates).addTo(map);
 
       return map;
     }
