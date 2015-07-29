@@ -11,6 +11,7 @@ app.views.SinglePostContent = app.views.Base.extend({
     ".oembed" : "oEmbedView",
     ".opengraph" : "openGraphView",
     ".status-message-location" : "postLocationStreamView",
+    ".map" : "postMapView",
     '.poll': 'pollView',
   },
 
@@ -20,6 +21,7 @@ app.views.SinglePostContent = app.views.Base.extend({
     this.oEmbedView = new app.views.OEmbed({model : this.model});
     this.openGraphView = new app.views.SPVOpenGraph({model : this.model});
     this.postContentView = new app.views.ExpandedStatusMessage({model: this.model});
+    this.postMapView = new app.views.LocationMap({model: this.model});
     this.pollView = new app.views.Poll({ model: this.model });
   },
 
@@ -37,35 +39,6 @@ app.views.SinglePostContent = app.views.Base.extend({
 
   showPost : function() {
     return (app.currentUser.get("showNsfw")) || !this.model.get("nsfw");
-  },
-
-  map: function() {
-    var coordinates = this.model.get("coordinates");
-
-    // if (coordinates != "" && tileserver.enable) {  // for when the tileserver is set via the diaspora.yml
-    if (coordinates.lat) {
-      $( ".map" ).append( "<div id='map'></div>" ); // this needs a new subview?
-      var tileLayerSource = "https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}";
-      var map = L.map("map").setView([coordinates.lat, coordinates.lng], 16);
-      var attribution = "Map data &copy; <a href='http://openstreetmap.org'>OpenStreetMap</a> contributors, " +
-                        "<a href='http://creativecommons.org/licenses/by-sa/2.0/''>CC-BY-SA</a>, " +
-                        "Imagery © <a href='http://mapbox.com'>Mapbox</a>";
-
-      L.tileLayer(tileLayerSource, {
-        attribution:  attribution,
-        maxZoom: 18,
-        id: "zaziemo.mpn66kn8",
-        accessToken: "pk.eyJ1IjoiemF6aWVtbyIsImEiOiI3ODVjMzVjNmM2ZTU3YWM3YTE5YWYwMTRhODljM2M1MSJ9.-nVgyS4PLnV4m9YkvMB5wA"
-      }).addTo(map);
-      
-      var markerOnMap = L.marker(coordinates).addTo(map);
-
-      return map;
-    }
-  },
-
-  postRenderTemplate : function(){
-    _.defer(_.bind(this.map, this));
   }
 });
 // @license-end
