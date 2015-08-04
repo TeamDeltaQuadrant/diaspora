@@ -39,7 +39,7 @@ app.views.Content = app.views.Base.extend({
   },
 
   location: function(){
-    var location = this.model.get('location')? this.model.get('location') : '';
+    var location = this.model.get("location")? this.model.get("location") : "";
     return location;
   },
 

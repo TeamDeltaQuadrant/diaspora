@@ -51,6 +51,7 @@
     "parse_url",
     "punycode",
     "qq",
+    "L",
 
     "loginAs",
     "logout",
