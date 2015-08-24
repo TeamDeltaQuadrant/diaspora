@@ -39,11 +39,7 @@ app.views.LocationStream = app.views.Content.extend({
           return map;
         }
       } else {
-          if (mapContainer.css("display") === "none") {
-          mapContainer.css("display", "block");
-          } else {
-            mapContainer.css("display", "none");
-          }
+          $(".mapContainer").toggle();
         }
       }
     }

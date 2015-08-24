@@ -68,13 +68,9 @@ app.views.SinglePostContent = app.views.Base.extend({
 
   toggleMap: function () {
     if (gon.appConfig.map.enabled){
-      if (this.$el.find(".mapContainer").css("height") === "75px") {
-        this.$el.find(".mapContainer").css("height", "200px");
-        this.$el.find(".leaflet-control-zoom").css("display", "block");
-      } else {
-          this.$el.find(".mapContainer").css("height", "75px");
-          this.$el.find(".leaflet-control-zoom").css("display", "none");
-      }
+      $('.mapContainer').height($('.small-map')[0] ? 200 : 50);
+      $('.leaflet-control-zoom').css("display", $('.small-map')[0] ? "block" : "none");
+      $(".mapContainer").toggleClass("small-map");
     }
   },
 

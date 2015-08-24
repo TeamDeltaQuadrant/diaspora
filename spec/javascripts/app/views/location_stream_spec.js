@@ -8,8 +8,8 @@ describe("app.views.LocationMap", function() {
     context("with location provided", function() {
       beforeEach(function(){
         this.post.set({location : factory.location()}); // set location
+        gon.appConfig = { map: {enabled: true, mapbox: {enabled: true, id: "yourID", accessToken: "yourAccessToken" }} };
         this.view.render();
-        console.log(this.view.$el.find(".mapContainer")[0]);
       });
 
       it("should contain a map container", function() {
@@ -21,14 +21,23 @@ describe("app.views.LocationMap", function() {
         this.view.toggleMap();
         expect(this.view.$el.find(".mapContainer")[0]).not.toHaveClass("empty");
       });
-      /*
-       * does not work .. not sure why
+
       it("should change display status on every click", function() {
-        expect(this.view.$el.find(".mapContainer")[0]).toHaveCss({display: "block"});
+        // this.view.toggleMap();
+        // console.log($(".mapContainer"));
+        // expect($(".mapContainer")).toHaveCss({display: "none"});
+        // expect($(".mapContainer")[0]).toBeVisible();
+        // this.view.toggleMap();
+        // console.log($(".mapContainer"));
+        // expect($(".mapContainer")).toHaveCss({display: "none"});
+        expect(this.view.$(".mapContainer")[0]).not.toBeVisible();
+        console.log(this.view.$(".mapContainer")[0]);
         this.view.toggleMap();
-        expect(this.view.$el.find(".mapContainer")[0]).toHaveCss({display: "none"});
+        console.log(this.view.$(".mapContainer")[0]);
+        expect(this.view.$(".mapContainer")[0]).toBeVisible();
+        this.view.toggleMap();
+        expect(this.view.$(".mapContainer")[0]).not.toBeVisible();
       });
-      */
     }),
     context("without location provided", function() {
       it("should not initialize the map", function() {
